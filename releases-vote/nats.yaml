@@ -1,0 +1,14 @@
+apiVersion: helm.fluxcd.io/v1
+kind: HelmRelease
+metadata:
+  name: votingsample-nats
+  namespace: flux-vote
+spec:
+  releaseName: votingsample-nats
+  chart:
+    git: https://github.com/helm/charts
+    ref: master
+    path: stable/nats
+  values:
+    auth:
+      enabled: false

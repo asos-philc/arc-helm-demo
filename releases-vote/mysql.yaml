@@ -1,0 +1,13 @@
+apiVersion: helm.fluxcd.io/v1
+kind: HelmRelease
+metadata:
+  name: votingsample-mysql
+  namespace: flux-vote
+spec:
+  releaseName: votingsample-mysql
+  chart:
+    git: https://github.com/helm/charts
+    ref: master
+    path: stable/mysql
+  values:
+    mysqlRootPassword: testing
