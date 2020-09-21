@@ -15,3 +15,5 @@ spec:
       tag: 0.0.0-local
     ingress:
       traefik_v2: true
+    configuration:
+      ConnectionString: "Server=votingsample-mysql;Port=3306;Database=votes;User=root;Password=testing;SslMode=None"
