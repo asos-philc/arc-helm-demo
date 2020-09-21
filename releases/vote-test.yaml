@@ -2,7 +2,7 @@ apiVersion: helm.fluxcd.io/v1
 kind: HelmRelease
 metadata:
   name: arc-vote-test
-  namespace: alpha-demo
+  namespace: vote-flux
 spec:
   releaseName: arc-vote-test
   chart:
