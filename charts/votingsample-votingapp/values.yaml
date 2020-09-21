@@ -1,0 +1,60 @@
+# Default values for votingsample-votingapp.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+replicaCount: 1
+
+image:
+  repository: asnpeuwphiacr.azurecr.io/votingsample/voting-app
+  tag: 0.0.0-local
+  pullPolicy: Always
+
+nameOverride: ""
+fullnameOverride: ""
+
+service:
+  name: votingsample-votingapp
+  type: ClusterIP
+  port: 443
+  internalPort : 443
+
+ingress:
+  enabled: true
+  traefik_v2: false
+  priority: 10
+  annotations:
+    kubernetes.io/ingress.class: traefik
+  path: /vote
+
+  tls: []
+  #  - secretName: chart-example-tls
+  #    hosts:
+  #      - chart-example.local
+
+deployment:
+  annotations:
+    orgs.k8s.snyk.io/v1: 78ddc5c1-6c2b-4cec-afd2-897c28ef9ad4
+
+configuration:
+  aspnetcore_urls: http://+:80;https://+:443
+  certificate_path: /pfx/keystore.p12
+  certificate_password: changeme
+  MessageQueue_Url: nats://message-queue:4222
+  
+resources: {}
+  # We usually recommend not to specify default resources and to leave this as a conscious
+  # choice for the user. This also increases chances charts run on environments with little
+  # resources, such as Minikube. If you do want to specify resources, uncomment the following
+  # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
+  # limits:
+  #   cpu: 100m
+  #   memory: 128Mi
+  # requests:
+  #   cpu: 100m
+  #   memory: 128Mi
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}

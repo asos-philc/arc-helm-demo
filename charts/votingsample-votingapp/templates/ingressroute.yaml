@@ -1,0 +1,21 @@
+{{- $fullName := include "votingsample-votingapp.fullname" . -}}
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: {{ $fullName }}
+  labels:
+    app.kubernetes.io/name: {{ include "votingsample-votingapp.name" . }}
+    helm.sh/chart: {{ include "votingsample-votingapp.chart" . }}
+    app.kubernetes.io/instance: {{ .Release.Name }}
+    app.kubernetes.io/managed-by: {{ .Release.Service }}
+spec:
+  entryPoints:
+    - websecure
+  routes:
+  - match: PathPrefix(`{{ .Values.ingress.path }}`)
+    kind: Rule
+    priority: {{ .Values.ingress.priority }}
+    services:
+      - name: {{ .Values.service.name }}
+        port: {{ .Values.service.port }}
+  tls: {} # use default TLSStore and cert

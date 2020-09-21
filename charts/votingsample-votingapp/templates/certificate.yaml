@@ -1,0 +1,28 @@
+{{- if semverCompare ">=1.16-0" .Capabilities.KubeVersion.GitVersion }}
+apiVersion: cert-manager.io/v1alpha2
+{{- else }}
+apiVersion: certmanager.k8s.io/v1alpha1
+{{- end }}
+kind: Certificate
+metadata:
+metadata:
+  name: {{ include "votingsample-votingapp.fullname" . }}
+  labels:
+    app.kubernetes.io/name: {{ include "votingsample-votingapp.name" . }}
+    helm.sh/chart: {{ include "votingsample-votingapp.chart" . }}
+    app.kubernetes.io/instance: {{ .Release.Name }}
+    app.kubernetes.io/managed-by: {{ .Release.Service }}
+spec:
+  secretName: {{ include "votingsample-votingapp.fullname" . }}-tls
+  issuerRef:
+    name: ca-issuer
+    kind: ClusterIssuer
+  keystores:
+    pkcs12:
+      create: true
+      passwordSecretRef: # Password used to encrypt the keystore
+        key: certificate_password
+        name: {{ include "votingsample-votingapp.fullname" . }}-settings
+  commonName: {{ include "votingsample-votingapp.fullname" . }}
+  organization:
+  - Voting Sample Application

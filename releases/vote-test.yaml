@@ -1,0 +1,14 @@
+apiVersion: helm.fluxcd.io/v1
+kind: HelmRelease
+metadata:
+  name: arc-vote-test
+  namespace: alpha-demo
+spec:
+  releaseName: arc-vote-test
+  chart:
+    git: https://github.com/asos-philc/arc-helm-demo
+    ref: master
+    path: charts/votingsample-vottingapp
+  values:
+    image.repository: asnpeuwphiacr.azurecr.io/votingsample/voting-app
+    image.tag: 0.0.0-local
