@@ -2,7 +2,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: {{ include "votingsample-resultsapp.fullname" . }}
-  namespace: {{ include "namespace" . }}
   labels:
     app.kubernetes.io/name: {{ include "votingsample-resultsapp.name" . }}
     helm.sh/chart: {{ include "votingsample-resultsapp.chart" . }}
