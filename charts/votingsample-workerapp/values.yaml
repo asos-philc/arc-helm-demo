@@ -5,8 +5,8 @@
 replicaCount: 1
 
 image:
-  repository: askstacr.azurecr.io/votingsample/voting-worker
-  tag: #{version}
+  repository: asnpeuwphiacr.azurecr.io/votingsample/votingsample-workerapp
+  tag: 0.0.0-local
   pullPolicy: IfNotPresent
 
 deployment:
