@@ -12,3 +12,4 @@ spec:
   values:
     image.repository: asnpeuwphiacr.azurecr.io/votingsample/voting-app
     image.tag: 0.0.0-local
+    ingress.traefik_v2: true

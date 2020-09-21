@@ -1,0 +1,28 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "votingsample-resultsapp.fullname" . }}-vhost
+  namespace: {{ include "namespace" . }}
+  labels:
+    app.kubernetes.io/name: {{ include "votingsample-resultsapp.name" . }}
+    helm.sh/chart: {{ include "votingsample-resultsapp.chart" . }}
+    app.kubernetes.io/instance: {{ .Release.Name }}
+    app.kubernetes.io/managed-by: {{ .Release.Service }}
+data:
+  default.conf: |
+    server {
+      listen                443 ssl;
+      ssl_certificate      /etc/ssl/private/tls.crt;
+      ssl_certificate_key  /etc/ssl/private/tls.key;
+      location / {
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header Host $http_host;
+        proxy_pass http://127.0.0.1:80/;
+      } 
+      location /resultsHub {
+        proxy_pass http://127.0.0.1:80/resultsHub;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection "Upgrade";
+      }
+    }

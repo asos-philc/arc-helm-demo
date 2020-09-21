@@ -1,0 +1,16 @@
+apiVersion: helm.fluxcd.io/v1
+kind: HelmRelease
+metadata:
+  name: votingsample-workerapp
+  namespace: flux-vote
+spec:
+  releaseName: votingsample-workerapp
+  chart:
+    git: https://github.com/asos-philc/arc-helm-demo
+    ref: master
+    path: charts/votingsample-workerapp
+  values:
+    image.repository: asnpeuwphiacr.azurecr.io/votingsample/votingsample-workerapp
+    image.tag: 0.0.0-local
+    configuration.ConnectionString: "Server=votingsample-mysql;Port=3306;Database=votes;User=root;Password=testing;SslMode=None"
+    configuration.MessageQueue_Url: "nats://votingsample-nats-client:4222"

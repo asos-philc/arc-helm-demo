@@ -1,0 +1,16 @@
+apiVersion: helm.fluxcd.io/v1
+kind: HelmRelease
+metadata:
+  name: votingsample-resultsapp
+  namespace: flux-vote
+spec:
+  releaseName: votingsample-resultsapp
+  chart:
+    git: https://github.com/asos-philc/arc-helm-demo
+    ref: master
+    path: charts/votingsample-resultsapp
+  values:
+    image.repository: asnpeuwphiacr.azurecr.io/votingsample/results-app
+    image.tag: 0.0.0-local
+    ingress.traefik_v2: true
+    configuration.ConnectionString: "Server=votingsample-mysql;Port=3306;Database=votes;User=root;Password=testing;SslMode=None"
