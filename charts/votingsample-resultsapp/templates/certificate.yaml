@@ -6,7 +6,6 @@ apiVersion: certmanager.k8s.io/v1alpha1
 kind: Certificate
 metadata:
   name: {{ include "votingsample-resultsapp.fullname" . }}
-  namespace: {{ include "namespace" . }}
   labels:
     app.kubernetes.io/name: {{ include "votingsample-resultsapp.name" . }}
     helm.sh/chart: {{ include "votingsample-resultsapp.chart" . }}
