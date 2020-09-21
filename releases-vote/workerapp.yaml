@@ -10,7 +10,9 @@ spec:
     ref: master
     path: charts/votingsample-workerapp
   values:
-    image.repository: asnpeuwphiacr.azurecr.io/votingsample/votingsample-workerapp
-    image.tag: 0.0.0-local
-    configuration.ConnectionString: "Server=votingsample-mysql;Port=3306;Database=votes;User=root;Password=testing;SslMode=None"
-    configuration.MessageQueue_Url: "nats://votingsample-nats-client:4222"
+    image:
+      repository: asnpeuwphiacr.azurecr.io/votingsample/voting-worker
+      tag: 0.0.0-local
+    configuration:
+      ConnectionString: "Server=votingsample-mysql;Port=3306;Database=votes;User=root;Password=testing;SslMode=None"
+      MessageQueue_Url: "nats://votingsample-nats-client:4222"

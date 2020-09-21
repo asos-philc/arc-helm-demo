@@ -10,7 +10,10 @@ spec:
     ref: master
     path: charts/votingsample-resultsapp
   values:
-    image.repository: asnpeuwphiacr.azurecr.io/votingsample/results-app
-    image.tag: 0.0.0-local
-    ingress.traefik_v2: true
-    configuration.ConnectionString: "Server=votingsample-mysql;Port=3306;Database=votes;User=root;Password=testing;SslMode=None"
+    image:
+      repository: asnpeuwphiacr.azurecr.io/votingsample/results-app
+      tag: 0.0.0-local
+    ingress:
+      traefik_v2: true
+    configuration:
+      ConnectionString: "Server=votingsample-mysql;Port=3306;Database=votes;User=root;Password=testing;SslMode=None"
