@@ -6,9 +6,9 @@ metadata:
 spec:
   releaseName: votingsample-nats
   chart:
-    git: https://github.com/helm/charts
-    ref: master
-    path: stable/nats
+    repository: https://kubernetes-charts.storage.googleapis.com
+    name: nats
+    version: 4.3.7
   values:
     auth:
       enabled: false

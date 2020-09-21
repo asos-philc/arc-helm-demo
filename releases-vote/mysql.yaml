@@ -6,8 +6,8 @@ metadata:
 spec:
   releaseName: votingsample-mysql
   chart:
-    git: https://github.com/helm/charts
-    ref: master
-    path: stable/mysql
+    repository: https://kubernetes-charts.storage.googleapis.com
+    name: mysql
+    version: 1.6.6
   values:
     mysqlRootPassword: testing
