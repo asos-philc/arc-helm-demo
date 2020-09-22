@@ -24,7 +24,7 @@ ingress:
   priority: 10
   annotations:
     kubernetes.io/ingress.class: traefik
-  path: /vote
+  path: /voting
 
   tls: []
   #  - secretName: chart-example-tls
