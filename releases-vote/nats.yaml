@@ -5,6 +5,7 @@ metadata:
   namespace: flux-vote
 spec:
   releaseName: votingsample-nats
+  targetNamespace: vote
   chart:
     repository: https://kubernetes-charts.storage.googleapis.com
     name: nats

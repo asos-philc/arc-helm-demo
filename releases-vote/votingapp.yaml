@@ -5,6 +5,7 @@ metadata:
   namespace: flux-vote
 spec:
   releaseName: votingsample-votingapp
+  targetNamespace: vote
   chart:
     git: https://github.com/asos-philc/arc-helm-demo
     ref: master
