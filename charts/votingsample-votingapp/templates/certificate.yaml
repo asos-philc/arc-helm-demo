@@ -22,7 +22,7 @@ spec:
       create: true
       passwordSecretRef: # Password used to encrypt the keystore
         key: certificate_password
-        name: {{ include "votingsample-votingapp.fullname" . }}-settings
+        name: {{ include "votingsample-votingapp.fullname" . }}-ss-settings
   commonName: {{ include "votingsample-votingapp.fullname" . }}
   organization:
   - Voting Sample Application

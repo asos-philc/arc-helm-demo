@@ -34,22 +34,22 @@ spec:
           - name: ASPNETCORE_URLS
             valueFrom:
               secretKeyRef:
-                name: {{ include "votingsample-votingapp.fullname" . }}-settings
+                name: {{ include "votingsample-votingapp.fullname" . }}-ss-settings
                 key: aspnetcore_urls
           - name: ASPNETCORE_Kestrel__Certificates__Default__Path
             valueFrom:
               secretKeyRef:
-                name: {{ include "votingsample-votingapp.fullname" . }}-settings
+                name: {{ include "votingsample-votingapp.fullname" . }}-ss-settings
                 key: certificate_path
           - name: ASPNETCORE_Kestrel__Certificates__Default__Password
             valueFrom:
               secretKeyRef:
-                name: {{ include "votingsample-votingapp.fullname" . }}-settings
+                name: {{ include "votingsample-votingapp.fullname" . }}-ss-settings
                 key: certificate_password
           - name: MessageQueue__Url
             valueFrom:
               secretKeyRef:
-                name: {{ include "votingsample-votingapp.fullname" . }}-settings
+                name: {{ include "votingsample-votingapp.fullname" . }}-ss-settings
                 key: MessageQueue_Url
           ports:
             - name: https
