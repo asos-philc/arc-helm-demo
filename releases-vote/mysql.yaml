@@ -12,6 +12,6 @@ spec:
     version: 7.1.0
   values:
     root:
-      Password: testing
+      password: testing
     replication:
       enabled: false
