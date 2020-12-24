@@ -7,9 +7,9 @@ spec:
   releaseName: votingsample-nats
   targetNamespace: vote
   chart:
-    repository: https://kubernetes-charts.storage.googleapis.com
+    repository: https://charts.bitnami.com/bitnami
     name: nats
-    version: 4.3.7
+    version: 5.0.0
   values:
     auth:
       enabled: false
