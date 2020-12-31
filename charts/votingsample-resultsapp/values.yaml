@@ -30,7 +30,7 @@ ingress:
 
 deployment:
   annotations:
-    orgs.k8s.snyk.io/v1: 78ddc5c1-6c2b-4cec-afd2-897c28ef9ad4
+    orgs.k8s.snyk.io/v1: 23b04d64-fbed-406f-a489-02914e140ec1
 
 configuration:
   ConnectionString: Server=votingsampleapps-msyql-mysql;Port=3306;Database=votes;User=root;Password=testing;SslMode=None
